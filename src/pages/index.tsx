@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import styles from '@/styles/Home.module.css';
 import axios, { AxiosResponse } from 'axios';
 import { useState } from 'react';
+import { ENDPOINT } from '@/constants';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -22,7 +23,7 @@ export default function Home() {
   const handleClick = async () => {
     const res: AxiosResponse<{ resultInt: number }> = await axios.get<{
       resultInt: number;
-    }>(`/mcount`);
+    }>(ENDPOINT);
     setResult(res.data.resultInt);
   };
 
